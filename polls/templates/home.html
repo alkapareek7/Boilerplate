@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="#">
+    {% csrf_token %}    
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">result</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for choice in my_choices%}
+      <tr>
+        <th scope="row">{{choice.id}}</th>
+        <td>{{choice.name}}</td>
+        <td>{{choice.result}}</td>
+        <td>
+            <button class="btn btn-warning" type="submit" name="change" value={{choice.id}}>change</button>
+        </td>
+
+      </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock content %}
